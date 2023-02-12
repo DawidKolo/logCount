@@ -1,53 +1,46 @@
+import re
 
 
-def publicationCounting():
+def pubCount():
 
-    publ = 0
+    s = open("data.txt", "r")
+    data = s.read()
 
 
-    for n in range(1000000):
+    pattern = r"(\d+) publications"
 
-        file = open("data.txt", "r")
-        data = file.read()
 
-        a = " " + str(n) + " publications"
+    matches = re.findall(pattern,data)
+    newList = [eval(i) for i in matches]
 
-        occur = data.count(a)
+    print("The number of the publications: " + str(sum(newList)))
 
-        publ = publ + (occur * n)
+def docCount():
+    s = open("data.txt", "r")
+    data = s.read()
 
-    print(publ)
+    pattern = r"(\d+) documents"
 
-def docCounting():
-    doc = 0
+    matches = re.findall(pattern, data)
+    newList = [eval(i) for i in matches]
 
-    for n in range(1000000):
-        file = open("data.txt", "r")
-        data = file.read()
-
-        a = " " + str(n) + " documents"
-
-        occur = data.count(a)
-
-        doc = doc + (occur * n)
-
-    print(doc)
+    print("The number of the documents: " + str(sum(newList)))
 
 def pageCount():
-    page = 0
+    s = open("data.txt", "r")
+    data = s.read()
 
-    for n in range(1000000):
-        file = open("data.txt", "r")
-        data = file.read()
+    pattern = r"(\d+) pages"
 
-        a = " " + str(n) + " pages"
+    matches = re.findall(pattern, data)
+    newList = [eval(i) for i in matches]
 
-        occur = data.count(a)
+    print("The number of pages: "+str(sum(newList)))
 
-        page = page + (occur * n)
-
-    print(page)
-
-publicationCounting()
-docCounting()
+pubCount()
+docCount()
 pageCount()
+
+
+
+
