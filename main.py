@@ -2,14 +2,14 @@ import re
 
 
 def pubCount():
-
+# open log file
     s = open("data.txt", "r")
     data = s.read()
 
-
+# define pattern to search
     pattern = r"(\d+) publications"
 
-
+# find all occurences of pattern
     matches = re.findall(pattern,data)
     newList = [eval(i) for i in matches]
 
